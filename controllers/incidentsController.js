@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 
 class Incidents {
-
+    // create
     async createIncidents(incident, res) {
         //informações para cadastrar na collection
         const { title, description, value, ongId } = incident
@@ -23,6 +23,7 @@ class Incidents {
             res.status(404).json({ msg: "Erro ao cadastrar o Incident", error })
         }
     }
+    // update
     async updateIncidents(id, incident, res) {
         //Collection of Incidents
         const Incident = mongoose.model('incidents')
@@ -39,6 +40,22 @@ class Incidents {
             res.status(400).json({ msg: "Erro ao atualizar Incident", error })
         }
     }
+    async listIncidents(res) {
+        //Collection of Incidents
+        const Incident = mongoose.model('incidents')
+        try {
+            //find
+            const find = await Incident.find().sort({ title: 1 }).exec();
+            res.status(202).json(find);
+        } catch (err) {
+            res.status(404).json({ msg: "Erro ao listar Incidents", err })
+        }
+        //contador de registros
+        const { count } = await Incident.count()
+        //contador de registros passando o o dado pelo cabeçalho
+        res.header('X-Total-Count', count);
+    }
+    // delete
     async deleteIncidents(id, res) {
         // Collectio of Incidents
         const Incident = mongoose.model('incidents')
@@ -53,4 +70,4 @@ class Incidents {
         }
     }
 }
-module.exports = new Incidents;
+module.exports = new Incidents
