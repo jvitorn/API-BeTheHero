@@ -23,6 +23,56 @@ class Ongs {
             res.status(404).json({ msg: "Erro ao cadastrar uma ONG", err })
         }
     }
+    async updateOng(id, ong, res) {
+        //informações para cadastrar na collection
+        const { name, email, password, whatsapp, city, uf } = ong
+        //Collection of ONGs
+        const Ong = mongoose.model('ongs')
+        try {
+            //atualizar informações
+            const update = await Ong.updateOne({ _id: id }, {
+                name: name,
+                email: email,
+                password: password,
+                whatsapp: whatsapp,
+                city: city,
+                uf: uf
+            })
+            res.status(201).json({ msg: "Dados Atualizados Com Sucesso", update })
+        }
+        catch (error) {
+            res.status(400).json({ msg: "Erro ao atualizar dados da ONG", error })
+        }
+    }
+    async listOng(res) {
+        //Collection of ONGs
+        const Ong = mongoose.model('ongs')
+        try {
+            //find
+            const find = await Ong.find().sort({ title: 1 }).exec();
+            res.status(202).json(find);
+        } catch (err) {
+            res.status(404).json({ msg: "Erro ao listar ONGs", err })
+        }
+        //contador de registros
+        const { count } = await Ong.count()
+        //contador de registros passando o o dado pelo cabeçalho
+        res.header('X-Total-Count', count);
+    }
+    // delete
+    async deleteOng(id, res) {
+        //Collection of ONGs
+        const Ong = mongoose.model('ongs')
+        try {
+            //Função de remover usuario passando como parametro o ID dele 
+            const dell = await Ong.deleteOne({ _id: id })
+            //passando status e um json com a resposta
+            res.status(204).json({ msg: "ONG Removida com sucesso", dell });
+        }
+        catch (error) {
+            res.status(400).json({ msg: "Erro ao deletar a ONG", error });
+        }
+    }
 }
-
+// export
 module.exports = new Ongs

@@ -30,7 +30,7 @@ class Incidents {
         try {
             //atualizar informações
             const update = await Incident.updateOne({ _id: id }, {
-                title: incident.name,
+                title: incident.title,
                 description: incident.description,
                 value: incident.email
             })
