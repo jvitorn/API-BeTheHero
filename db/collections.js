@@ -18,11 +18,7 @@ class Collections {
                 type: String,
                 require: true,
                 index: true,
-                unique: true,
-                validate: {
-                    validator: () => Promise.resolve(false),
-                    message: 'Email validation failed'
-                }
+                unique: true
             },
             password: {
                 type: String,

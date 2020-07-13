@@ -50,14 +50,15 @@ class Ongs {
         try {
             //find
             const find = await Ong.find().sort({ title: 1 }).exec();
-            res.status(202).json(find);
+            //contador de registros
+            const { count } = await Ong.countDocuments()
+            res.status(202).json({ results: find, count: count });
         } catch (err) {
             res.status(404).json({ msg: "Erro ao listar ONGs", err })
         }
-        //contador de registros
-        const { count } = await Ong.count()
-        //contador de registros passando o o dado pelo cabeçalho
-        res.header('X-Total-Count', count);
+
+
+
     }
     // delete
     async deleteOng(id, res) {
