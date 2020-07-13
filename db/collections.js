@@ -9,6 +9,34 @@ class Collections {
         const Schema = mongoose.Schema
         //model ongs
         const ongSchema = new Schema({
+            name: {
+                type: String,
+                require: true
+            },
+            email: {
+                type: String,
+                require: true,
+                index: true,
+                unique: true
+            },
+            password: {
+                type: String,
+                require: true
+            },
+            whatsapp: {
+                type: Number,
+                require: true
+            },
+            city: {
+                type: String,
+                require: true
+            },
+            uf: {
+                type: String,
+                max: 2,
+                require: true
+            }
+
 
         })
         //criando uma collection usando o Schema definido
@@ -20,7 +48,22 @@ class Collections {
     incidentSchema(mongoose) {
         // model incidents
         const IncidentSchema = mongoose.Schema({
-
+            title: {
+                type: String,
+                require: true
+            },
+            description: {
+                type: String,
+                require: true
+            },
+            value: {
+                type: Number,
+                require: true
+            },
+            ongId: {
+                type: String,
+                require: true
+            }
         })
         //criando uma collection usando o schema definido
         mongoose.model('incidents', IncidentSchema);
