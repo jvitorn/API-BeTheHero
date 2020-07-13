@@ -11,13 +11,18 @@ class Collections {
         const ongSchema = new Schema({
             name: {
                 type: String,
-                require: true
+                require: true,
+                validate: () => Promise.reject(new Error('Oops!'))
             },
             email: {
                 type: String,
                 require: true,
                 index: true,
-                unique: true
+                unique: true,
+                validate: {
+                    validator: () => Promise.resolve(false),
+                    message: 'Email validation failed'
+                }
             },
             password: {
                 type: String,
@@ -25,7 +30,8 @@ class Collections {
             },
             whatsapp: {
                 type: Number,
-                require: true
+                require: true,
+                unique: true
             },
             city: {
                 type: String,
