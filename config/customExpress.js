@@ -20,7 +20,7 @@ module.exports = () => {
     app.use(bodyParser.json())
     //consign esta incluindo tudo que esta na pasta 'controllers' para dentro do app
     consign()
-        .include('controllers')
+        .include('controllers,routes')
         .into(app)
     //cors
     app.use(cors())

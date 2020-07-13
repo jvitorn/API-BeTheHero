@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-class Incidents {
+module.exports = {
     // create
     async createIncidents(incident, res) {
         //informações para cadastrar na collection
@@ -22,7 +22,7 @@ class Incidents {
         catch (error) {
             res.status(404).json({ msg: "Erro ao cadastrar o Incident", error })
         }
-    }
+    },
     // update
     async updateIncidents(id, incident, res) {
         //Collection of Incidents
@@ -39,7 +39,7 @@ class Incidents {
         catch (error) {
             res.status(400).json({ msg: "Erro ao atualizar Incident", error })
         }
-    }
+    },
     async listIncidents(res) {
         //Collection of Incidents
         const Incident = mongoose.model('incidents')
@@ -54,7 +54,7 @@ class Incidents {
         const { count } = await Incident.count()
         //contador de registros passando o o dado pelo cabeçalho
         res.header('X-Total-Count', count);
-    }
+    },
     // delete
     async deleteIncidents(id, res) {
         // Collectio of Incidents
@@ -70,4 +70,3 @@ class Incidents {
         }
     }
 }
-module.exports = new Incidents
