@@ -51,7 +51,6 @@ class Incidents {
             //contador de registros
             const { count } = await Incident.countDocuments()
 
-
             res.status(202).json({ results: find, count: count });
         } catch (err) {
             res.status(404).json({ msg: "Erro ao listar Incidents", err })
