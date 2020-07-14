@@ -50,6 +50,8 @@ class Ongs {
         try {
             //find
             const find = await Ong.find().sort({ title: 1 }).exec();
+
+            const filter = await find.filter(result => { return result.password = !null })
             //contador de registros
             const count = await Ong.countDocuments()
             res.status(202).json({ results: find, count: count });
