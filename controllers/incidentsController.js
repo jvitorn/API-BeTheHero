@@ -5,14 +5,15 @@ class Incidents {
     // create
     async createIncidents(incident, res) {
         //informações para cadastrar na collection
-        const { title, description, value, ongId } = incident
-        const Incident = mongoose.model('incidents')
+        const { title, description, value, url, ongId } = incident
+        const Incident = await mongoose.model('incidents')
         //insert
         try {
             const insert = await new Incident({
                 title: title,
                 description: description,
                 value: value,
+                url: url,
                 ongId: ongId
             }).save()
             // caso concluido irá executar isso

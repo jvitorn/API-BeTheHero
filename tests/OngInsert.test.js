@@ -2,8 +2,8 @@ const collections = require('../db/collections')
 const mongoose = require('mongoose');
 const UserModel = require('../controllers/ongsController');
 const userData = {
-    name: "joao vitor",
-    email: "joaouno@yopmail.com",
+    name: "test",
+    email: "test@yopmail.com",
     password: "123",
     whatsapp: "123456789",
     city: "Itanhaém",

@@ -22,7 +22,7 @@ module.exports = app => {
             Incident.updateIncidents(id, incident, res)
         })
         .delete((req, res) => {
-            const id = req.params;
+            const { id } = req.params;
             Incident.deleteIncidents(id, res)
         })
 }

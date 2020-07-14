@@ -61,6 +61,10 @@ class Collections {
                 type: Number,
                 require: true
             },
+            url: {
+                type: String,
+                require: true
+            },
             ongId: {
                 type: String,
                 require: true

@@ -2,15 +2,14 @@ const collections = require('../db/collections')
 const mongoose = require('mongoose');
 const IncidentModel = require('../controllers/incidentsController');
 const userData = {
-    name: "joao vitor",
-    email: "joaouno@yopmail.com",
-    password: "123",
-    whatsapp: "123456789",
-    city: "Itanhaém",
-    uf: "SP"
+    title: "titulo",
+    description: "aqui vai uma descrição de teste",
+    value: "120.00",
+    url: "naotem",
+    ongId: "fdfoaofsaofa9wrjq0fjqw9fq0wfjqw0f9j"
 };
 
-describe('Testando model ONG´s', () => {
+describe('Testando model Incident´s', () => {
 
     // It's just so easy to connect to the MongoDB Memory Server 
     // By using mongoose.connect
@@ -25,11 +24,11 @@ describe('Testando model ONG´s', () => {
                 process.exit(1);
             }
         });
-        collections.init(connection, mongoose);
+        await collections.init(connection, mongoose);
     });
 
-    it('Criando e Salvando dado de uma ONG', async done => {
-        const validUser = UserModel.createOng(userData);
+    it('Criando e Salvando dado de um Incident', async done => {
+        const validUser = IncidentModel.createIncidents(userData);
 
         // Object Id should be defined when successfully saved to MongoDB.
         done()

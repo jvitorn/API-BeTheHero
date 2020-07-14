@@ -5,7 +5,7 @@ class Ongs {
         //informações para cadastrar na collection
         const { name, email, password, whatsapp, city, uf } = ong
         // model
-        const Ong = mongoose.model('ongs')
+        const Ong = await mongoose.model('ongs')
         //insert
         try {
             //save -> insert
