@@ -44,11 +44,13 @@ class Incidents {
     async listIncidents(res) {
         //Collection of Incidents
         const Incident = mongoose.model('incidents')
+
         try {
             //find
             const find = await Incident.find().sort({ title: 1 }).exec();
             //contador de registros
             const { count } = await Incident.countDocuments()
+
 
             res.status(202).json({ results: find, count: count });
         } catch (err) {

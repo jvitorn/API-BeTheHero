@@ -16,6 +16,10 @@ module.exports = app => {
             Ong.createOng(ong, res)
         })
     app.route(routes.ongId)
+        .get((req, res) => {
+            const { id } = req.params;
+            Ong.listId(id, res)
+        })
         .put((req, res) => {
             const { id } = req.params;
             const ong = req.body

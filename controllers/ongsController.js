@@ -49,14 +49,31 @@ class Ongs {
         const Ong = await mongoose.model('ongs')
         try {
             //find
-            const find = await Ong.find().sort({ title: 1 }).exec();
+            const find = await Ong.find({}, { password: 0, uf: 0 }).sort({ title: 1 }).exec();
 
-            const filter = await find.filter(result => { return result.password = !null })
+
             //contador de registros
             const count = await Ong.countDocuments()
             res.status(202).json({ results: find, count: count });
-        } catch (err) {
-            res.status(404).json({ msg: "Erro ao listar ONGs", err })
+        } catch (error) {
+            res.status(404).json({ msg: "Erro ao listar ONGs", err: error })
+        }
+
+
+
+    }
+    async listId(id, res) {
+        //Collection of ONGs
+        const Ong = await mongoose.model('ongs')
+        try {
+            //find
+            const find = await Ong.find({ _id: id }, { password: 0 }).sort({ title: 1 }).exec();
+
+
+
+            res.status(202).json({ results: find });
+        } catch (error) {
+            res.status(404).json({ msg: "Erro ao listar ONGs", err: error })
         }
 
 

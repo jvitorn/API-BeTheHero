@@ -25,7 +25,7 @@ describe('Testando model ONG´s', () => {
                 process.exit(1);
             }
         });
-        collections.init(connection, mongoose);
+        await collections.init(connection, mongoose);
     });
 
     it('Criando e Salvando dado de uma ONG', async done => {
