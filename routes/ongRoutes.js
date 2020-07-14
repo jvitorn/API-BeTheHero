@@ -12,18 +12,18 @@ module.exports = app => {
             Ong.listOng(res)
         })
         .post((req, res) => {
-
-
+            const ong = req.body
             Ong.createOng(ong, res)
         })
     app.route(routes.ongId)
         .put((req, res) => {
-            const id = req.headers.authorization;
-
+            const { id } = req.params;
+            const ong = req.body
             Ong.updateOng(id, ong, res)
         })
         .delete((req, res) => {
-            const id = req.headers.authorization;
+            const { id } = req.params;
+
             Ong.deleteOng(id, res)
         })
 }

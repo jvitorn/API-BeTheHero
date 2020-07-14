@@ -5,14 +5,13 @@ class Collections {
         this.ongSchema(mongoose)
         this.incidentSchema(mongoose)
     }
-    ongSchema(mongoose) {
+    async ongSchema(mongoose) {
         const Schema = mongoose.Schema
         //model ongs
-        const ongSchema = new Schema({
+        const ongSchema = await new Schema({
             name: {
                 type: String,
-                require: true,
-                validate: () => Promise.reject(new Error('Oops!'))
+                require: true
             },
             email: {
                 type: String,
@@ -42,14 +41,14 @@ class Collections {
 
         })
         //criando uma collection usando o Schema definido
-        mongoose.model('ongs', ongSchema)
-        ongSchema.index({ email: 1 }, { unique: true })
+        await mongoose.model('ongs', ongSchema)
+        await ongSchema.index({ email: 1 }, { unique: true })
         // log
-        console.log('Schema de ONG´s criado com sucesso')
+
     }
-    incidentSchema(mongoose) {
+    async incidentSchema(mongoose) {
         // model incidents
-        const IncidentSchema = mongoose.Schema({
+        const IncidentSchema = await mongoose.Schema({
             title: {
                 type: String,
                 require: true
@@ -68,9 +67,9 @@ class Collections {
             }
         })
         //criando uma collection usando o schema definido
-        mongoose.model('incidents', IncidentSchema);
+        await mongoose.model('incidents', IncidentSchema);
         //log
-        console.log('Incident Schema criado com Sucesso');
+
     }
 }
 module.exports = new Collections;

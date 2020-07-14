@@ -46,12 +46,12 @@ class Ongs {
     }
     async listOng(res) {
         //Collection of ONGs
-        const Ong = mongoose.model('ongs')
+        const Ong = await mongoose.model('ongs')
         try {
             //find
             const find = await Ong.find().sort({ title: 1 }).exec();
             //contador de registros
-            const { count } = await Ong.countDocuments()
+            const count = await Ong.countDocuments()
             res.status(202).json({ results: find, count: count });
         } catch (err) {
             res.status(404).json({ msg: "Erro ao listar ONGs", err })
@@ -62,13 +62,15 @@ class Ongs {
     }
     // delete
     async deleteOng(id, res) {
+        const ongId = id
         //Collection of ONGs
-        const Ong = mongoose.model('ongs')
+        const Ong = await mongoose.model('ongs')
         try {
             //Função de remover usuario passando como parametro o ID dele 
-            const dell = await Ong.deleteOne({ _id: id })
+            const dell = await Ong.deleteOne({ _id: ongId }).exec()
+
             //passando status e um json com a resposta
-            res.status(204).json({ msg: "ONG Removida com sucesso", dell });
+            res.status(204).json({ msg: "ONG Removida com sucesso", result: dell.ok });
         }
         catch (error) {
             res.status(400).json({ msg: "Erro ao deletar a ONG", error });

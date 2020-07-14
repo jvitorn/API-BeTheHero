@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "jest tests/",
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
