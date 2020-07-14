@@ -1,7 +1,8 @@
 const Ong = require('../controllers/ongsController')
 // routes
 const routes = {
-    ong: '/api/ongs'
+    ong: '/api/ongs',
+    ongId: '/api/ongs/:id'
 }
 module.exports = app => {
 
