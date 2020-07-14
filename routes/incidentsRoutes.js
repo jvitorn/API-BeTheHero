@@ -2,7 +2,7 @@ const Incident = require('../controllers/incidentsController')
 // routes
 const routes = {
     incidents: '/api/incidents',
-    incidentsId: '/api/incidents:id'
+    incidentsId: '/api/incidents/:id'
 }
 
 module.exports = app => {
@@ -17,12 +17,12 @@ module.exports = app => {
         })
     app.route(routes.incidentsId)
         .put((req, res) => {
-            const id = req.headers.authorization;
+            const { id } = req.params;
             const incident = req.body;
             Incident.updateIncidents(id, incident, res)
         })
         .delete((req, res) => {
-            const id = req.headers.authorization;
+            const id = req.params;
             Incident.deleteIncidents(id, res)
         })
 }

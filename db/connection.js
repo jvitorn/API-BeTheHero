@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-require('dotenv').config({ path: '.env' });
+
 //configurações de conexao
 const connection = async () => {
     await mongoose.connect("mongodb://localhost/behero", {
