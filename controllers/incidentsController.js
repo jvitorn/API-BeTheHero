@@ -30,7 +30,7 @@ class Incidents {
         const Incident = mongoose.model('incidents')
         try {
             //atualizar informações
-            const update = await Incident.updateOne({ _id: id }, {
+            const update = await Incident.findOneAndUpdate({ _id: id }, {
                 title: incident.title,
                 description: incident.description,
                 value: incident.email

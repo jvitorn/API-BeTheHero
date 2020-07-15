@@ -86,7 +86,7 @@ class Ongs {
         const Ong = await mongoose.model('ongs')
         try {
             //Função de remover usuario passando como parametro o ID dele 
-            const dell = await Ong.deleteOne({ _id: ongId }).exec()
+            const dell = await Ong.findOneAndDelete({ _id: ongId }).exec()
 
             //passando status e um json com a resposta
             res.status(204).json({ msg: "ONG Removida com sucesso", result: dell.ok });
