@@ -15,24 +15,23 @@ class Login {
             let msg
             if (find) {
                 msg = 'usuario encontrado'
-
+                const authenticate = true;
                 const payload = { userID: find._id, userName: find.name, userMail: find.email }
                 const header = {
-                    expiresIn: 300 // expires 
+                    expiresIn: 3000 // expires 
                 }
-                const authenticate = find.nivel == 'user' ? false : true;
+
+                //signature revelada por questoes educacionais, caso nao, adicionar dotenv ao seu projeto
                 const SIGNATURE = 'HHTDSI'
                 await JWT.sign(payload, SIGNATURE, header, (err, token) => {
                     if (err) {
                         throw new Error('erro');
                     }
-
                     res.setHeader('x-access-token', token);
-                    res.status(202).json({ adm: authenticate, auth: true, token: token });
+                    res.status(202).json({ ong: authenticate, msg: msg, token: token });
                 })
             }
-            // caso concluido irá executar isso
-            res.status(202).json({ msg: msg, result: find._id })
+
         }
         // case error
         catch (error) {
