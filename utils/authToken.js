@@ -3,7 +3,7 @@ const JWT = require('jsonwebtoken')
 const SIGNATURE = 'HHTDSI'
 module.exports = {
     async validateToken(req = request, res = response, next) {
-        const authtoken = req.headers['x-access-token']
+        const authtoken = req.headers.authorization
 
         if (!authtoken) {
             return res.status(401).json({ msg: "Token não enviado" })
@@ -21,14 +21,11 @@ module.exports = {
             return res.status(401).json({ msg: "Token malformado" })
         }
 
-        const { codigo, nivel, nome } = JWT.decode(token);
 
-        if (!codigo || !nivel || !nome) {
-            return res.status(401).json({ msg: "Token Inválido" })
-        }
+        const verif = authtoken.split('Bearer ')
+        JWT.verify(verif[1], SIGNATURE, (err, decoded) => {
 
-        JWT.verify(authtoken, SIGNATURE, (err, decoded) => {
-            if (err) return res.status(500).send({ auth: false, msg: 'Falha ao autenticar Token.' })
+            if (err) return res.status(500).json({ auth: false, msg: 'Falha ao autenticar Token.' })
 
             // se tudo estiver ok, salva no request para uso posterior
             req.userId = decoded.id
