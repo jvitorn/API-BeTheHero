@@ -67,7 +67,7 @@ class Ongs {
         const Ong = await mongoose.model('ongs')
         try {
             //find
-            const find = await Ong.find({ _id: id }, { password: 0 }).sort({ title: 1 }).exec();
+            const find = await Ong.findOne({ _id: id }, { password: 0 }).sort({ title: 1 }).exec();
 
 
 

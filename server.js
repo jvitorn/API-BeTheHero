@@ -1,5 +1,4 @@
 // require
-
 const customExpress = require('./config/customExpress')
 const app = customExpress();
 const mongoose = require('mongoose')
@@ -9,7 +8,7 @@ const collections = require('./db/collections')
 // connection 
 connection.then(() => {
     //init connection
-    collections.init(connection, mongoose);
+    collections.init(connection, mongoose)
 
 })
     // if error

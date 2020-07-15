@@ -14,7 +14,7 @@ describe('Testando model Incident´s', () => {
     // It's just so easy to connect to the MongoDB Memory Server 
     // By using mongoose.connect
     beforeAll(async () => {
-        const connection = await mongoose.connect("mongodb://localhost/behero", {
+        const connection = await mongoose.connect("mongodb+srv://jvitorn:UE8v9L5fhUmiBoUO@cluster0-ydowt.gcp.mongodb.net/behero?retryWrites=true&w=majority", {
             useUnifiedTopology: true,
             useCreateIndex: true,
             useNewUrlParser: true

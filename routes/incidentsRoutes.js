@@ -12,17 +12,21 @@ module.exports = app => {
             Incident.listIncidents(res)
         })
         .post((req, res) => {
-            const incident = req.body;
+            const incident = req.body
             Incident.createIncidents(incident, res)
         })
     app.route(routes.incidentsId)
+        .get((req, res) => {
+            const { id } = req.params
+            Incident.listId(id, res)
+        })
         .put((req, res) => {
-            const { id } = req.params;
+            const { id } = req.params
             const incident = req.body;
             Incident.updateIncidents(id, incident, res)
         })
         .delete((req, res) => {
-            const { id } = req.params;
+            const { id } = req.params
             Incident.deleteIncidents(id, res)
         })
 }

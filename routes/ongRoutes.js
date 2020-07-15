@@ -17,16 +17,16 @@ module.exports = app => {
         })
     app.route(routes.ongId)
         .get((req, res) => {
-            const { id } = req.params;
+            const { id } = req.params
             Ong.listId(id, res)
         })
         .put((req, res) => {
-            const { id } = req.params;
+            const { id } = req.params
             const ong = req.body
             Ong.updateOng(id, ong, res)
         })
         .delete((req, res) => {
-            const { id } = req.params;
+            const { id } = req.params
 
             Ong.deleteOng(id, res)
         })
