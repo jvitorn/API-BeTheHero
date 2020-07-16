@@ -45,7 +45,12 @@ para a utilização e criação de alguns recursos.
   ```
 </details>
 
-## Ong
+## Ong -  `/Ongs/:id`
+
+- Post
+- Get
+- Put
+- Delete
 
 ## Incident
 
