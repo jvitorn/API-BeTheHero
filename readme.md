@@ -184,7 +184,7 @@ para a utilização e criação de alguns recursos.
     "description": "aqui vai uma descrição de teste",
     "value": "120.00",
     "url": "naotem",
-    "ongId": "5f0dddde9fd05c3978d11b8d"
+    "ongId": "5f0dddde9fd05c3978d11b8d" //id da ONG
   }
   ```
   <br/>
@@ -204,8 +204,9 @@ para a utilização e criação de alguns recursos.
   </summary>
   <br/>
   <b>Rota:</b> `GET /incidents`
-  <br />
+  <br/>
   <b>Autenticação:</b> Não
+  <br/>
   <b>Body:</b> Não
   <b>Response:</b>
 
@@ -232,9 +233,10 @@ para a utilização e criação de alguns recursos.
     <b>Put</b> - <i>Atualizar Incident</i>
   </summary>
   <br/>
-  <b>Rota:</b> `PUT /ongs/:id`
-  <br />
+  <b>Rota:</b> ` PUT /incidents/:id `
+  <br/>
   <b>Autenticação:</b> Sim
+  <br/>
   <b>Body:</b>
   
   ```
