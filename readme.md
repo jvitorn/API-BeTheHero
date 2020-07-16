@@ -52,7 +52,7 @@ para a utilização e criação de alguns recursos.
     <b>Post</b> - <i>Criar ONG</i>
   </summary>
   <br/>
-  <b>Rota:</b> `POST /ongs`
+  <b>Rota:</b> `/ongs`
   <br/>
   <b>Autenticação:</b> Não
   <br/>
@@ -120,6 +120,33 @@ para a utilização e criação de alguns recursos.
   ```
 </details>
 
+<details>
+  <summary>
+    <b>Get ONG</b> - <i>Mostrar ONG Especifica</i>
+  </summary>
+  <br/>
+  <b>Rota:</b> `GET /ongs/:id`
+  <br/>
+  <b>Autenticação:</b> Não
+  <br/>
+  <b>Body:</b> Não
+  <br/>
+  <b>Response:</b>
+
+  ```
+  {
+    "results": {
+      "_id": "5f0dddde9fd05c3978d11b8d",
+      "name": "joao vitor 2",
+      "email": "joaouno@yopmail.com.br",
+      "whatsapp": 123456784,
+      "city": "Itanhaém",
+      "uf": "SPP",
+      "__v": 0
+    }
+  }
+  ```
+</details>
 
 <details>
   <summary>
@@ -164,7 +191,7 @@ para a utilização e criação de alguns recursos.
   ```
 </details>
 
-## Incident
+## Incident -  `/incidents/:id`
 
 
 <details>
@@ -172,7 +199,7 @@ para a utilização e criação de alguns recursos.
     <b>Post</b> - <i>Criar Incident</i>
   </summary>
   <br/>
-  <b>Rota:</b> `POST /incidents`
+  <b>Rota:</b> `/incidents`
   <br/>
   <b>Autenticação:</b> Não
   <br/>
@@ -224,6 +251,34 @@ para a utilização e criação de alguns recursos.
     }
   ]
 }
+  ```
+</details>
+
+<details>
+  <summary>
+    <b>Get Incident</b> - <i>Mostrar Incident Especifico</i>
+  </summary>
+  <br/>
+  <b>Rota:</b> `GET /incidents/:id`
+  <br/>
+  <b>Autenticação:</b> Não
+  <br/>
+  <b>Body:</b> Não
+  <br/>
+  <b>Response:</b>
+
+  ```
+  {
+    "results": {
+      "_id": "5f0f1a7092b34c46904fb194",
+      "title": "titulo 2",
+      "description": "aqui vai uma descrição de teste",
+      "value": 120,
+      "url": "naotem",
+      "ongId": "5f0dddde9fd05c3978d11b8d",
+      "__v": 0
+    }
+  }
   ```
 </details>
 
