@@ -13,15 +13,16 @@ para a utilização e criação de alguns recursos.
 
 - Ong´s
 - Incident´s
+- Session
 
-## Login
+## Login - `/session`
 <details>
   <summary>
     <b>Login</b> - <i>Logar ONG</i>
   </summary>
   <br/>
   
-  <b>Rota:</b> `POST /login`
+  <b>Rota:</b> `POST /session`
   <br />
   <b>Autenticação:</b> Não
   <br />
