@@ -57,10 +57,6 @@ class Collections {
                 type: String,
                 require: true
             },
-            value: {
-                type: Number,
-                require: true
-            },
             url: {
                 type: String,
                 require: true

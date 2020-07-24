@@ -12,7 +12,6 @@ class Incidents {
             const insert = await new Incident({
                 title: title,
                 description: description,
-                value: value,
                 url: url,
                 ongId: ongId
             }).save()
@@ -28,13 +27,14 @@ class Incidents {
     async updateIncidents(id, incident, res) {
         //Collection of Incidents
         const Incident = mongoose.model('incidents')
+
         try {
             //atualizar informações
-            const update = await Incident.findOneAndUpdate({ _id: id }, {
+            const update = await Incident.updateOne({ _id: id }, {
                 title: incident.title,
-                description: incident.description,
-                value: incident.email
+                description: incident.description
             })
+
             res.status(201).json({ msg: "Dados Atualizados Com Sucesso", update })
         }
         catch (error) {
