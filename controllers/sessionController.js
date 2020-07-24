@@ -10,15 +10,14 @@ class Login {
         //insert
         try {
             //find
-            const find = await Ong.find({ email: email, password: password }, { password: 0 }).sort({ title: 1 }).exec();
-            const findEmail = await Ong.findOne({ email: email }).exec()
-
+            const find = await Ong.find({ email: email, password: password }, { password: 0 }).exec()
+            const findEmail = await Ong.find({ email: email }, { password: 0 }).exec()
 
             let msg
-            if (find) {
+            if (find[0]._id == find[0]._id) {
                 msg = 'usuario encontrado'
                 const authenticate = true;
-                const payload = { userID: find._id, userName: find.name, userMail: find.email }
+                const payload = { userID: find[0]._id, userName: find[0].name, userMail: find[0].email }
                 const header = {
                     expiresIn: 3000 // expires 
                 }
@@ -31,15 +30,18 @@ class Login {
                     }
                     res.setHeader('x-access-token', token);
                     res.status(202).json({ ong: authenticate, msg: msg, token: token });
-                    next()
+
                 })
+            } else {
+                res.status(404).json({ msg: "usuario nao encontrado,favor verifique seus dados e tente novamente", error })
+
             }
 
         }
         // case error
         catch (error) {
             res.status(404).json({ msg: "usuario nao encontrado,favor verifique seus dados e tente novamente", error })
-            next()
+
         }
     }
 }
