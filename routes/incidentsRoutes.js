@@ -3,7 +3,8 @@ const { validateToken } = require('../utils/authToken')
 // routes
 const routes = {
     incidents: '/api/incidents',
-    incidentsId: '/api/incidents/:id'
+    incidentsId: '/api/incidents/:id',
+    ongIncident: '/api/incident/:id'
 }
 
 module.exports = app => {
@@ -21,13 +22,18 @@ module.exports = app => {
             const { id } = req.params
             Incident.listId(id, res)
         })
-        .put((req, res) => {
+        .put(validateToken, (req, res) => {
             const { id } = req.params
             const incident = req.body;
             Incident.updateIncidents(id, incident, res)
         })
-        .delete((req, res) => {
+        .delete(validateToken, (req, res) => {
             const { id } = req.params
             Incident.deleteIncidents(id, res)
+        })
+    app.route(routes.ongIncident)
+        .get((req, res) => {
+            const { id } = req.params
+            Incident.listOng(id, res)
         })
 }

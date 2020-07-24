@@ -75,6 +75,18 @@ class Incidents {
 
 
     }
+    async listOng(id, res) {
+        //Collection of ONGs
+        const Incident = await mongoose.model('incidents')
+        try {
+            //find
+            const find = await Incident.find({ ongId: id }, { password: 0 }).sort({ title: 1 }).exec()
+
+            res.status(202).json({ results: find })
+        } catch (error) {
+            res.status(404).json({ msg: "Erro ao listar Incidents dessa ONG", err: error })
+        }
+    }
     // delete
     async deleteIncidents(id, res) {
         // Collectio of Incidents
